@@ -4,7 +4,7 @@ using UnityEngine;
 
 public class PlayerController : MonoBehaviour
 {
-    private float speed = 50.0f;
+    [SerializeField] public float speed = 50.0f;
     private Rigidbody playerRb;
     private float xBound = 15.0f;
     // Start is called before the first frame update
@@ -25,8 +25,8 @@ public class PlayerController : MonoBehaviour
         float horizontalInput = Input.GetAxis("Horizontal");
         float verticalInput = Input.GetAxis("Vertical");
 
-        playerRb.AddForce(Vector3.forward * speed * verticalInput);
-        playerRb.AddForce(Vector3.right * speed * horizontalInput);
+        playerRb.AddForce(playerRb.transform.forward * verticalInput * speed);
+        playerRb.AddForce(playerRb.tran  * horizontalInput * speed);
     }
 
     void ConstrainPlayerPosition()
