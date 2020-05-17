@@ -6,7 +6,7 @@ public class PlayerController : MonoBehaviour
 {
     [SerializeField] public float speed = 50.0f;
     private Rigidbody playerRb;
-    private float xBound = 15.0f;
+    private float xBound = 11.0f;
     // Start is called before the first frame update
     void Start()
     {
@@ -26,7 +26,7 @@ public class PlayerController : MonoBehaviour
         float verticalInput = Input.GetAxis("Vertical");
 
         playerRb.AddForce(playerRb.transform.forward * verticalInput * speed);
-        playerRb.AddForce(playerRb.tran  * horizontalInput * speed);
+        playerRb.AddForce(playerRb.transform.right * horizontalInput * speed);
     }
 
     void ConstrainPlayerPosition()
@@ -47,6 +47,7 @@ public class PlayerController : MonoBehaviour
         if(collision.gameObject.CompareTag("Enemy"))
         {
             Debug.Log("Player has collided with an Enemy");
+            Destroy(collision.gameObject); //Destroys enemy object
         }
     }
 

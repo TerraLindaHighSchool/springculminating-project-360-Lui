@@ -5,15 +5,15 @@ using UnityEngine;
 public class SpawnManager : MonoBehaviour
 {
     [SerializeField] private GameObject[] enemies;
-    [SerializeField] private GameObject powerup;
+    //[SerializeField] private GameObject powerup;
 
     private float zEnemySpawn = 12.0f;
-    private float xSpawnRange = 16.0f;
+    private float xSpawnRange = 8.0f;
     private float zPowerupRange = 5.0f;
     private float ySpawn = 0.75f;
 
     private float powerupSpawnTime = 5.0f;
-    private float enemySpawntime = 1.0f;
+    private float enemySpawntime = 2.0f;
     private float startDelay = 1.0f;
 
     // Start is called before the first frame update
@@ -46,6 +46,6 @@ public class SpawnManager : MonoBehaviour
 
         Vector3 spawnPos = new Vector3(randomX, ySpawn, randomZ);
 
-        Instantiate(powerup, spawnPos, powerup.gameObject.transform.rotation);
+        //Instantiate(powerup, spawnPos, powerup.gameObject.transform.rotation);
     }
 }

@@ -6,7 +6,7 @@ public class MoveDown : MonoBehaviour
 {
     [SerializeField] private float speed = 5.0f;
 
-    private float zDestroy = -10.0f;
+    private float zDestroy = -20.0f;
     private Rigidbody objectRb;
     // Start is called before the first frame update
     void Start()
