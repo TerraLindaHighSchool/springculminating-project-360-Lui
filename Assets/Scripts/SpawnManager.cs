@@ -13,14 +13,15 @@ public class SpawnManager : MonoBehaviour
     private float ySpawn = 0.75f;
 
     private float powerupSpawnTime = 5.0f;
-    private float enemySpawntime = 2.0f;
-    private float startDelay = 1.0f;
+    public float enemySpawntime = 2.0f;
+    public float startDelay = 1.0f;
+
+    public bool isGameActive = false;
 
     // Start is called before the first frame update
     void Start()
     {
-        InvokeRepeating("SpawnRandomEnemy", startDelay, enemySpawntime);
-        InvokeRepeating("SpawnPowerup", startDelay, powerupSpawnTime);
+        
     }
 
     // Update is called once per frame
@@ -47,5 +48,13 @@ public class SpawnManager : MonoBehaviour
         Vector3 spawnPos = new Vector3(randomX, ySpawn, randomZ);
 
         //Instantiate(powerup, spawnPos, powerup.gameObject.transform.rotation);
+    }
+
+    public void StartGame()
+    {
+        isGameActive = true;
+
+        InvokeRepeating("SpawnRandomEnemy", startDelay, enemySpawntime);
+        InvokeRepeating("SpawnPowerup", startDelay, powerupSpawnTime);
     }
 }

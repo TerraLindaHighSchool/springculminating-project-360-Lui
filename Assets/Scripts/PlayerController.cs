@@ -6,7 +6,9 @@ public class PlayerController : MonoBehaviour
 {
     [SerializeField] public float speed = 50.0f;
     private Rigidbody playerRb;
-    private float xBound = 11.0f;
+    private float xBound = 10.0f;
+    private float zBound = 10.0f;
+    private float zBoundB = 12.0f;
     // Start is called before the first frame update
     void Start()
     {
@@ -39,6 +41,16 @@ public class PlayerController : MonoBehaviour
         if (transform.position.x < -xBound)
         {
             transform.position = new Vector3(-xBound, transform.position.y, transform.position.z);
+        }
+
+        if (transform.position.z > zBound)
+        {
+            transform.position = new Vector3(transform.position.x, transform.position.y, zBound);
+        }
+
+        if (transform.position.z < -zBoundB)
+        {
+            transform.position = new Vector3(transform.position.x, transform.position.y, -zBoundB);
         }
     }
 
