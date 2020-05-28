@@ -1,6 +1,7 @@
 ﻿using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
+using TMPro;
 
 public class SpawnManager : MonoBehaviour
 {
@@ -13,15 +14,20 @@ public class SpawnManager : MonoBehaviour
     private float ySpawn = 0.75f;
 
     private float powerupSpawnTime = 5.0f;
-    public float enemySpawntime = 2.0f;
     public float startDelay = 1.0f;
 
     public bool isGameActive = false;
+    public GameObject titleScreen;
+    public GameObject playScreen;
+    public GameObject endGame;
+    public TextMeshProUGUI healthText;
+    public int health;
 
     // Start is called before the first frame update
     void Start()
     {
-        
+        health = 5;
+        healthText.text = "Health: " + health;
     }
 
     // Update is called once per frame
@@ -50,11 +56,29 @@ public class SpawnManager : MonoBehaviour
         //Instantiate(powerup, spawnPos, powerup.gameObject.transform.rotation);
     }
 
-    public void StartGame()
+    public void StartGame(int difficulty)
     {
         isGameActive = true;
+        while (isGameActive)
+        { 
+            titleScreen.gameObject.SetActive(false);
+            playScreen.gameObject.SetActive(true);
 
-        InvokeRepeating("SpawnRandomEnemy", startDelay, enemySpawntime);
-        InvokeRepeating("SpawnPowerup", startDelay, powerupSpawnTime);
+            InvokeRepeating("SpawnRandomEnemy", startDelay, difficulty);
+            InvokeRepeating("SpawnPowerup", startDelay, powerupSpawnTime);
+
+            if (health <= 0)
+            {
+                EndGame();
+            }
+        }
+    }
+
+    public void EndGame()
+    {
+        isGameActive = false;
+        endGame.gameObject.SetActive(true);
+
+
     }
 }

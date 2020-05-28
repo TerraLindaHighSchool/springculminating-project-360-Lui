@@ -9,10 +9,12 @@ public class PlayerController : MonoBehaviour
     private float xBound = 10.0f;
     private float zBound = 10.0f;
     private float zBoundB = 12.0f;
+    public SpawnManager healthValue;
     // Start is called before the first frame update
     void Start()
     {
         playerRb = GetComponent<Rigidbody>();
+        healthValue = GameObject.Find("SpawnManager").GetComponent<SpawnManager>();
     }
 
     // Update is called once per frame
@@ -54,12 +56,13 @@ public class PlayerController : MonoBehaviour
         }
     }
 
-    private void OnCollisionEnter(Collision collision)
+    public void OnCollisionEnter(Collision collision)
     {
         if(collision.gameObject.CompareTag("Enemy"))
         {
             Debug.Log("Player has collided with an Enemy");
             Destroy(collision.gameObject); //Destroys enemy object
+            healthValue.health--;
         }
     }
 
