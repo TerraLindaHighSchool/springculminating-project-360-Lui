@@ -2,6 +2,7 @@
 using System.Collections.Generic;
 using UnityEngine;
 using TMPro;
+using UnityEngine.SceneManagement;
 
 public class SpawnManager : MonoBehaviour
 {
@@ -27,13 +28,18 @@ public class SpawnManager : MonoBehaviour
     void Start()
     {
         health = 5;
-        healthText.text = "Health: " + health;
+        isGameActive = true;
     }
 
     // Update is called once per frame
     void Update()
     {
-        
+        healthText.text = "Health: " + health;
+
+        if (health <= 0)
+        {
+            EndGame();
+        }
     }
 
     void SpawnRandomEnemy()
@@ -58,27 +64,26 @@ public class SpawnManager : MonoBehaviour
 
     public void StartGame(int difficulty)
     {
-        isGameActive = true;
-        while (isGameActive)
-        { 
-            titleScreen.gameObject.SetActive(false);
-            playScreen.gameObject.SetActive(true);
+        titleScreen.gameObject.SetActive(false);
+        playScreen.gameObject.SetActive(true);
 
+        if(isGameActive)
+        {
             InvokeRepeating("SpawnRandomEnemy", startDelay, difficulty);
             InvokeRepeating("SpawnPowerup", startDelay, powerupSpawnTime);
-
-            if (health <= 0)
-            {
-                EndGame();
-            }
         }
     }
 
     public void EndGame()
     {
+        CancelInvoke();
         isGameActive = false;
         endGame.gameObject.SetActive(true);
+        playScreen.gameObject.SetActive(false);
+    }
 
-
+    public void RestartGame()
+    {
+        SceneManager.LoadScene(SceneManager.GetActiveScene().name);
     }
 }
