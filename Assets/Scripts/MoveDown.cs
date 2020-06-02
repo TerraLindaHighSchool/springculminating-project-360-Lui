@@ -9,11 +9,13 @@ public class MoveDown : MonoBehaviour
     private float zDestroy = -20.0f;
     private Rigidbody objectRb;
     private GameObject planeG;
+    private GameObject planeG1;
     // Start is called before the first frame update
     void Start()
     {
         objectRb = GetComponent<Rigidbody>();
         planeG = GameObject.Find("PlaneG");
+        planeG1 = GameObject.Find("PlaneG1");
     }
 
     // Update is called once per frame
@@ -27,5 +29,6 @@ public class MoveDown : MonoBehaviour
         }
 
         planeG.transform.Translate(Vector3.back * Time.deltaTime * (speed / 5));
+        planeG1.transform.Translate(Vector3.back * Time.deltaTime * (speed / 5));
     }
 }

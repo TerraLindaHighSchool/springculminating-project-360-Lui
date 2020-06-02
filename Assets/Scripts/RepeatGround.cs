@@ -11,13 +11,13 @@ public class RepeatGround : MonoBehaviour
     void Start()
     {
         startPos = transform.position;
-        repeatWidth = GetComponent<BoxCollider>().size.z / 3;
+        repeatWidth = GetComponent<BoxCollider>().size.z;
     }
 
     // Update is called once per frame
     void Update()
     {
-        if (transform.position.z < startPos.z - repeatWidth)
+        if (transform.position.z < startPos.z - repeatWidth * 4.85)
         {
             transform.position = startPos;
         }
