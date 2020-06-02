@@ -31,6 +31,12 @@ public class PlayerController : MonoBehaviour
 
         playerRb.AddForce(playerRb.transform.forward * verticalInput * speed);
         playerRb.AddForce(playerRb.transform.right * horizontalInput * speed);
+
+        while (Input.GetKeyDown(KeyCode.LeftArrow))
+        {
+            playerRb.transform.Rotate(0.0f, 0.0f, 10.0f);
+        }
+        
     }
 
     void ConstrainPlayerPosition()

@@ -17,7 +17,7 @@ public class RepeatGround : MonoBehaviour
     // Update is called once per frame
     void Update()
     {
-        if (transform.position.z < startPos.z - repeatWidth * 4.85)
+        if (transform.position.z < startPos.z - repeatWidth * 4.848)
         {
             transform.position = startPos;
         }
