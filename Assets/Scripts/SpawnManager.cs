@@ -22,22 +22,24 @@ public class SpawnManager : MonoBehaviour
     public GameObject title;
     public GameObject playScreen;
     public GameObject endGame;
+    public GameObject planeScreen;
+    public CountdownTimer timeR;
     public TextMeshProUGUI healthText;
     public int health;
 
     // Start is called before the first frame update
-    void Start()
+    public void Start()
     {
         health = 5;
-        isGameActive = true;
+        timeR = GameObject.Find("SpawnManager").GetComponent<CountdownTimer>();
     }
 
     // Update is called once per frame
-    void Update()
+    public void Update()
     {
         healthText.text = "Health: " + health;
 
-        if (health <= 0)
+        if (health <= 0 || timeR.countDown < 0)
         {
             EndGame();
         }
@@ -65,6 +67,7 @@ public class SpawnManager : MonoBehaviour
 
     public void StartGame(int difficulty)
     {
+        isGameActive = true;
         titleScreen.gameObject.SetActive(false);
         title.gameObject.SetActive(false);
         playScreen.gameObject.SetActive(true);

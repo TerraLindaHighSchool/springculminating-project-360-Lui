@@ -9,7 +9,8 @@ public class CountdownTimer : MonoBehaviour
 {
     float currentTime = 0.0f;
     float startingTime = 60.0f;
-    int countDown;
+    public int countDown = 60;
+    public SpawnManager gameT;
 
     public TextMeshProUGUI countdownTimer;
 
@@ -17,13 +18,17 @@ public class CountdownTimer : MonoBehaviour
     void Start()
     {
         currentTime = startingTime;
+        gameT = GameObject.Find("SpawnManager").GetComponent<SpawnManager>();
     }
 
     // Update is called once per frame
-    void Update()
+    public void Update()
     {
-        currentTime -= 1.0f * Time.deltaTime;
-        countDown = Mathf.FloorToInt(currentTime);
-        countdownTimer.text = "Time Remaining: " + countDown;
+        if (gameT.isGameActive)
+        {
+            currentTime -= 1.0f * Time.deltaTime;
+            countDown = (int)currentTime;
+            countdownTimer.text = "Time Remaining: " + countDown;
+        }
     }
 }
