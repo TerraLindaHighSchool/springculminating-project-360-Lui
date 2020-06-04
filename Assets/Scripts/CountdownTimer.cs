@@ -9,8 +9,9 @@ public class CountdownTimer : MonoBehaviour
 {
     float currentTime = 0.0f;
     float startingTime = 60.0f;
+    int countDown;
 
-    private TextMeshProUGUI countdownText;
+    public TextMeshProUGUI countdownTimer;
 
     // Start is called before the first frame update
     void Start()
@@ -22,6 +23,7 @@ public class CountdownTimer : MonoBehaviour
     void Update()
     {
         currentTime -= 1.0f * Time.deltaTime;
-        currentTime.text = "Time Remaining: " + currentTime;
+        countDown = Mathf.FloorToInt(currentTime);
+        countdownTimer.text = "Time Remaining: " + countDown;
     }
 }

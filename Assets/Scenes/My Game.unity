@@ -1948,7 +1948,6 @@ GameObject:
   - component: {fileID: 1197610472}
   - component: {fileID: 1197610475}
   - component: {fileID: 1197610474}
-  - component: {fileID: 1197610473}
   m_Layer: 5
   m_Name: Countdown Timer
   m_TagString: Untagged
@@ -1975,18 +1974,6 @@ RectTransform:
   m_AnchoredPosition: {x: -549, y: 211}
   m_SizeDelta: {x: 300, y: 50}
   m_Pivot: {x: 0.5, y: 0.5}
---- !u!114 &1197610473
-MonoBehaviour:
-  m_ObjectHideFlags: 0
-  m_CorrespondingSourceObject: {fileID: 0}
-  m_PrefabInstance: {fileID: 0}
-  m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 1197610471}
-  m_Enabled: 1
-  m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: fab5094a2fe6c3949822af5e2428f3df, type: 3}
-  m_Name: 
-  m_EditorClassIdentifier: 
 --- !u!114 &1197610474
 MonoBehaviour:
   m_ObjectHideFlags: 0

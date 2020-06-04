@@ -19,6 +19,7 @@ public class SpawnManager : MonoBehaviour
 
     public bool isGameActive = false;
     public GameObject titleScreen;
+    public GameObject title;
     public GameObject playScreen;
     public GameObject endGame;
     public TextMeshProUGUI healthText;
@@ -65,6 +66,7 @@ public class SpawnManager : MonoBehaviour
     public void StartGame(int difficulty)
     {
         titleScreen.gameObject.SetActive(false);
+        title.gameObject.SetActive(false);
         playScreen.gameObject.SetActive(true);
 
         if(isGameActive)
