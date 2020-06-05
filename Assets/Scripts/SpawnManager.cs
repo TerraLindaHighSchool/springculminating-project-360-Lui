@@ -23,6 +23,7 @@ public class SpawnManager : MonoBehaviour
     public GameObject playScreen;
     public GameObject endGame;
     public GameObject planeScreen;
+    public GameObject sceneScreen;
     public CountdownTimer timeR;
     public TextMeshProUGUI healthText;
     public int health;
@@ -89,6 +90,6 @@ public class SpawnManager : MonoBehaviour
 
     public void RestartGame()
     {
-        SceneManager.LoadScene(SceneManager.GetActiveScene().name);
+        SceneManager.LoadScene("My Game");
     }
 }
